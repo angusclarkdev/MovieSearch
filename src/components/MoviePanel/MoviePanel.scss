@@ -1,0 +1,30 @@
+.movie-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 100px 1fr;
+  margin: 0 2rem;
+  width: 100%;
+}
+
+.poster-image {
+  height: 350px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.movie-info-li {
+  text-align: left;
+  list-style-type: none;
+  // padding: 0 1rem;
+}
+
+.image-ul {
+  margin: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-padding-start: 0;
+}
+
+.released-span {
+  font-weight: bold;
+}

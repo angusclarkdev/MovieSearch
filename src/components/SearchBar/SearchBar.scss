@@ -1,0 +1,41 @@
+.search-wrapper {
+  text-align: center;
+  margin: 5rem 0;
+  position: relative;
+}
+
+.searchbar {
+  height: 35px;
+  width: 600px;
+  border: none;
+  border-bottom: 1px solid #00000066;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 1);
+  text-indent: 1.5rem;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+  }
+
+  &:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+  }
+
+  &::placeholder {
+    color: rgba(0, 0, 0, .4);
+  }
+}
+
+.searchbar:focus::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 1);
+}
+
+.searchicon {
+  position: absolute;
+  top: 0;
+}
+
+.f-icon {
+  color: blue;
+}
