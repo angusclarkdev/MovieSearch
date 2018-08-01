@@ -5,49 +5,49 @@ import SubTitle from '../SubTitle'
 import PopOut from '../PopOut'
 import './MoviePanel.scss'
 
-class MoviePanel extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      popOutVisible: false,
-      dummyData: props.dummyData,
-      targetMovieData: "foundItem"
+class MoviePanel extends Component {
+    constructor (props) {
+      super(props);
+      
+      this.state = {
+        popOutVisible: false,
+        mostPopular: props.mostPopular,
+        targetMovieData: "foundItem"
+      }
     }
-  }
+// toggle state 
+// pull correct movie information from data [x]
+// this.state.popOutVisible = popOutVisible
 
   handleClick = (e) => {
-      // toggle state 
-      // pull correct movie information from data [x]
-      // this.state.popOutVisible = popOutVisible
-      if (this.state.popOutVisible) {
+    if (this.state.popOutVisible) {
         this.setState({
           popOutVisible: !this.state.popOutVisible
         })
       }
-    let foundItem = this.state.dummyData.results.find(item => {
+
+    let foundItem = this.state.mostPopular.find(item => {
         return item.id == e.target.dataset.id
       }) 
-      this.setState({
-        popOutVisible: this.state.targetMovieData === foundItem ?
-                      !this.state.popOutVisible : 
-                       this.state.popOutVisible,
-        dummyData: this.state.dummyData,
-        targetMovieData: foundItem
-      })
+
+    this.setState({
+      popOutVisible: this.state.targetMovieData === foundItem ?
+                    !this.state.popOutVisible : 
+                      this.state.popOutVisible,
+      mostPopular: this.state.mostPopular,
+      targetMovieData: foundItem
+    })
       // if (this.state.targetMovieData === foundItem) {
       //   this.setState({
       //     popOutVisible: !this.state.popOutVisible
       //   })
   }
-  
-
 
   render () {
     const state = this.state
-    const { dummyData } = this.props
+    const { mostPopular } = this.props
     
-    const images = dummyData.results.map(i => {
+    const images = mostPopular.map(i => {
       return (
         <ul styleName='image-ul' key={i.id}>
           <li styleName='movie-info-li'> {i.title} </li>
@@ -55,7 +55,7 @@ class MoviePanel extends React.Component {
           <li styleName='movie-info-li'>
               <img
                 data-id={i.id}
-                src={i.image} 
+                src={i.poster_path}
                 styleName='poster-image' 
                 alt='poster image'
                 onClick={this.handleClick} />
