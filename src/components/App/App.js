@@ -28,12 +28,16 @@ class App extends Component {
     axios.all([this.getMostPopular(), this.getConfig()])
       .then(axios.spread((mostPop, config) => {    
         console.log("success")
+        // console.log(config);
+        
         const results = mostPop.data.results
         const baseURL = config.data.images.base_url
-
+        const imgSize = config.data.images.poster_sizes[3]
+        
         this.setState({ 
           mostPopular: results,
           baseURL,
+          imgSize,
         })
       }))
 
@@ -51,6 +55,7 @@ class App extends Component {
         <MoviePanel 
           baseURL={this.state.baseURL} 
           mostPopular={this.state.mostPopular} 
+          imgSize={this.state.imgSize} 
         />}
       </div>
     )

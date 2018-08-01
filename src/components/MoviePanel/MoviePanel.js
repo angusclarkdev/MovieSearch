@@ -45,17 +45,17 @@ class MoviePanel extends Component {
 
   render () {
     const state = this.state
-    const { mostPopular, baseURL } = this.props
+    const { mostPopular, baseURL, imgSize } = this.props
     
     const images = mostPopular.map(i => {
       return (
         <ul styleName='image-ul' key={i.id}>
-          <li styleName='movie-info-li'> {i.title} </li>
+          <li styleName='movie-info-li movie-title-li'> {i.title} </li>
           <li styleName='movie-info-li'> {<span styleName='released-span'> released: </span>} {i.release_date} </li>
           <li styleName='movie-info-li'>
               <img
                 data-id={i.id}
-                src={`${baseURL}${i.poster_path}`}
+                src={`${baseURL}${imgSize}${i.poster_path}`}
                 styleName='poster-image' 
                 alt='poster image'
                 onClick={this.handleClick} />

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 100px 1fr;
+  row-gap: 1.5rem;
   margin: 0 2rem;
   width: 100%;
 }
@@ -16,6 +17,11 @@
   text-align: left;
   list-style-type: none;
   // padding: 0 1rem;
+}
+
+.movie-title-li {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .image-ul {
