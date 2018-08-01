@@ -50,15 +50,20 @@ class MoviePanel extends Component {
     const images = mostPopular.map(i => {
       return (
         <ul styleName='image-ul' key={i.id}>
-          <li styleName='movie-info-li movie-title-li'> {i.title} </li>
+          <h3 styleName='movie-info-li movie-title-li'> {i.title} </h3>
           <li styleName='movie-info-li'> {<span styleName='released-span'> released: </span>} {i.release_date} </li>
-          <li styleName='movie-info-li'>
+          <li styleName='movie-info-li movie-info-img'>
               <img
                 data-id={i.id}
                 src={`${baseURL}${imgSize}${i.poster_path}`}
                 styleName='poster-image' 
                 alt='poster image'
-                onClick={this.handleClick} />
+                onClick={this.handleClick}
+              />
+            <span styleName={
+              i.vote_average < 6 ? 'movie-info-vote movie-info-vote-red': 
+              i.vote_average < 7 ? 'movie-info-vote movie-info-vote-orange' :
+              'movie-info-vote movie-info-vote-green'}> {i.vote_average} </span> 
           </li>
         </ul>
       )

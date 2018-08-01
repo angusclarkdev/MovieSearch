@@ -19,8 +19,38 @@
   // padding: 0 1rem;
 }
 
+.movie-info-img {
+  position: relative;
+}
+
+.movie-info-vote {
+  text-align: center;
+  border-radius: 50%;
+  box-sizing: content-box;
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  bottom: 30px;
+  left: 15px;
+}
+
+.movie-info-vote-green {
+  background-color: rgba(9, 237, 35, .7);
+}
+
+.movie-info-vote-orange {
+  background-color: rgba(255, 173, 22, .8);
+}
+
+.movie-info-vote-red {
+  background-color: rgba(255, 0, 0, .7);
+}
+
 .movie-title-li {
-  font-size: 1.3rem;
+  // font-size: 1.3rem;
   font-weight: bold;
 }
 

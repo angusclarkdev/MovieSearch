@@ -15,13 +15,19 @@ class App extends Component {
       mostPopular: null
     }
   }
+
+  getSingleTitle = () => {
+    return axios.get(endPoints.all)
+  }
+
   getMostPopular = () => { 
-    return axios.get(endPoints.movies)
+    return axios.get(endPoints.popular)
   }  
 
   getConfig = () => {
     return axios.get(endPoints.config)
   }
+
 
   componentDidMount () {
     
