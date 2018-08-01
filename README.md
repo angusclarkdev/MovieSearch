@@ -1,10 +1,6 @@
-# To Do MVC
+# Movie Search
 
-Reimplement the following piece of UI: http://todomvc.com/examples/react/#/
+An app which hooks into themoviedatabase API. Users can view most popular movies in the UK
 
-Using...
-- ES6
-- React
-- A state management library of your choice (or the context API!)
-- React CSS modules
-
+### Author: 
+Angus Clark
