@@ -6,8 +6,7 @@ import './App.scss'
 import Title from '../Title'
 import SearchBar from '../SearchBar'
 import MoviePanel from '../MoviePanel'
-// import dummyData from '../../api'
-import { movieEndpoint, configEndpoint } from '../../api'
+import endPoints from '../../api'
 
 class App extends Component {
   constructor () {
@@ -16,31 +15,43 @@ class App extends Component {
       mostPopular: null
     }
   }
+  getMostPopular = () => { 
+    return axios.get(endPoints.movies)
+  }  
 
-  componentDidMount () {
-    axios.get(movieEndpoint)
-      .then((response) => {
-        const results = response.data.results
-        console.log(results)
-
-        this.setState({
-          mostPopular: results
-        })
-      })
-      .catch(error => {
-        console.log('failed call to API', error)
-      })
+  getConfig = () => {
+    return axios.get(endPoints.config)
   }
 
-  render () {
-    // console.log(this.state)
+  componentDidMount () {
+    
+    axios.all([this.getMostPopular(), this.getConfig()])
+      .then(axios.spread((mostPop, config) => {    
+        console.log("success")
+        const results = mostPop.data.results
+        const baseURL = config.data.images.base_url
 
+        this.setState({ 
+          mostPopular: results,
+          baseURL,
+        })
+      }))
+
+    .catch(error => {
+        console.log('failed call to API:', error)
+      })
+  }
+  
+  render () {
     return (
       <div styleName='wrapper'>
         <Title />
         <SearchBar />
         {this.state.mostPopular !== null &&
-        <MoviePanel mostPopular={this.state.mostPopular} />}
+        <MoviePanel 
+          baseURL={this.state.baseURL} 
+          mostPopular={this.state.mostPopular} 
+        />}
       </div>
     )
   }

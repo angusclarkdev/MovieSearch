@@ -45,7 +45,7 @@ class MoviePanel extends Component {
 
   render () {
     const state = this.state
-    const { mostPopular } = this.props
+    const { mostPopular, baseURL } = this.props
     
     const images = mostPopular.map(i => {
       return (
@@ -55,7 +55,7 @@ class MoviePanel extends Component {
           <li styleName='movie-info-li'>
               <img
                 data-id={i.id}
-                src={i.poster_path}
+                src={`${baseURL}${i.poster_path}`}
                 styleName='poster-image' 
                 alt='poster image'
                 onClick={this.handleClick} />
